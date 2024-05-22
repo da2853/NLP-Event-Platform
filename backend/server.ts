@@ -1,6 +1,9 @@
 import fastify from 'fastify';
+import connectToDatabase from './src/database';
 
 const server = fastify({ logger: true });
+
+server.register(connectToDatabase);
 
 server.get('/', async (request, reply) => {
   reply.type('application/json').code(200);
